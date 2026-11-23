@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+.venv/
+samples/mordor_empire_wmi.zip

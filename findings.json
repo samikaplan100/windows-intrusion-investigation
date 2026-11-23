@@ -1,0 +1,355 @@
+{
+  "source_event_count": 6383,
+  "target_host": "WORKSTATION6",
+  "host_event_count": 1871,
+  "confirmed": [
+    {
+      "confidence": "confirmed",
+      "text": "4 type-3 network logon records were observed. Source address(es): 172.18.39.5.",
+      "evidence": [
+        {
+          "id": 4624,
+          "record": 768442,
+          "time_utc": null,
+          "host": "WORKSTATION6"
+        },
+        {
+          "id": 4624,
+          "record": 768447,
+          "time_utc": null,
+          "host": "WORKSTATION6"
+        },
+        {
+          "id": 4624,
+          "record": 768450,
+          "time_utc": null,
+          "host": "WORKSTATION6"
+        },
+        {
+          "id": 4624,
+          "record": 768453,
+          "time_utc": null,
+          "host": "WORKSTATION6"
+        }
+      ]
+    },
+    {
+      "confidence": "confirmed",
+      "text": "1 event 4104 PowerShell script-block record(s) exist in the host export. No process-to-script correlation is assumed.",
+      "evidence": [
+        {
+          "id": 4104,
+          "record": 8669,
+          "time_utc": null,
+          "host": "WORKSTATION6"
+        }
+      ]
+    },
+    {
+      "confidence": "confirmed",
+      "text": "Sysmon recorded powershell.exe ParentProcessGuid matching the ProcessGuid of wmiprvse.exe. This documents a process-parent reference, not who initiated the action.",
+      "evidence": [
+        {
+          "id": 1,
+          "record": 3215112,
+          "time_utc": "2020-09-21T04:14:53.715000Z",
+          "host": "WORKSTATION6"
+        },
+        {
+          "id": 1,
+          "record": 3215160,
+          "time_utc": "2020-09-21T04:14:53.831000Z",
+          "host": "WORKSTATION6"
+        }
+      ]
+    },
+    {
+      "confidence": "confirmed",
+      "text": "Sysmon recorded conhost.exe ParentProcessGuid matching the ProcessGuid of powershell.exe. This documents a process-parent reference, not who initiated the action.",
+      "evidence": [
+        {
+          "id": 1,
+          "record": 3215160,
+          "time_utc": "2020-09-21T04:14:53.831000Z",
+          "host": "WORKSTATION6"
+        },
+        {
+          "id": 1,
+          "record": 3215167,
+          "time_utc": "2020-09-21T04:14:53.846000Z",
+          "host": "WORKSTATION6"
+        }
+      ]
+    },
+    {
+      "confidence": "confirmed",
+      "text": "Sysmon recorded whoami.exe ParentProcessGuid matching the ProcessGuid of powershell.exe. This documents a process-parent reference, not who initiated the action.",
+      "evidence": [
+        {
+          "id": 1,
+          "record": 3215160,
+          "time_utc": "2020-09-21T04:14:53.831000Z",
+          "host": "WORKSTATION6"
+        },
+        {
+          "id": 1,
+          "record": 3215794,
+          "time_utc": "2020-09-21T04:15:12.964000Z",
+          "host": "WORKSTATION6"
+        }
+      ]
+    }
+  ],
+  "consistent_with": [
+    {
+      "confidence": "consistent_with",
+      "text": "Observed logons and WMI/PowerShell activity are consistent with OTRF's documented simulation of remote WMI execution, but temporal proximity alone does not prove which logon initiated which process.",
+      "evidence": []
+    }
+  ],
+  "unknown": [
+    {
+      "confidence": "unknown",
+      "text": "PowerShell launched with script-execution indicators. 4104 events exist on the host, but a specific 4104-to-process match has not been established. Payload completeness remains unknown.",
+      "evidence": [
+        {
+          "id": 1,
+          "record": 3215160,
+          "time_utc": "2020-09-21T04:14:53.831000Z",
+          "host": "WORKSTATION6"
+        }
+      ]
+    },
+    {
+      "confidence": "unknown",
+      "text": "Host OS build and full logging/audit policy configuration are not supplied. Security EventTime is local with unverified timezone; @timestamp is collector time, not reliable proof of event creation time.",
+      "evidence": []
+    }
+  ],
+  "unsupported": [
+    {
+      "confidence": "unsupported",
+      "text": "Cannot independently claim a real-world unauthorized breach, PowerShell logging failure, erased records, or complete knowledge of the remote command's effects.",
+      "evidence": []
+    }
+  ],
+  "timeline": [
+    {
+      "record": 3215112,
+      "event": 1,
+      "source": "Microsoft-Windows-Sysmon",
+      "time_utc": "2020-09-21T04:14:53.715000Z",
+      "local_time_unverified": null,
+      "collector_utc": null,
+      "details": {
+        "process": "wmiprvse.exe",
+        "image": "C:\\Windows\\System32\\wbem\\WmiPrvSE.exe",
+        "pid": null,
+        "parent_pid": 960,
+        "guid": "{d273d0f0-28bd-5f68-ae08-000000000800}",
+        "parent_guid": "{d273d0f0-e866-5f64-1100-000000000800}",
+        "command_line_present": true,
+        "encoded_argument": false
+      }
+    },
+    {
+      "record": 3215160,
+      "event": 1,
+      "source": "Microsoft-Windows-Sysmon",
+      "time_utc": "2020-09-21T04:14:53.831000Z",
+      "local_time_unverified": null,
+      "collector_utc": null,
+      "details": {
+        "process": "powershell.exe",
+        "image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "pid": null,
+        "parent_pid": 2740,
+        "guid": "{d273d0f0-28bd-5f68-af08-000000000800}",
+        "parent_guid": "{d273d0f0-28bd-5f68-ae08-000000000800}",
+        "command_line_present": true,
+        "encoded_argument": true
+      }
+    },
+    {
+      "record": 3215167,
+      "event": 1,
+      "source": "Microsoft-Windows-Sysmon",
+      "time_utc": "2020-09-21T04:14:53.846000Z",
+      "local_time_unverified": null,
+      "collector_utc": null,
+      "details": {
+        "process": "conhost.exe",
+        "image": "C:\\Windows\\System32\\conhost.exe",
+        "pid": null,
+        "parent_pid": 9804,
+        "guid": "{d273d0f0-28bd-5f68-b008-000000000800}",
+        "parent_guid": "{d273d0f0-28bd-5f68-af08-000000000800}",
+        "command_line_present": true,
+        "encoded_argument": false
+      }
+    },
+    {
+      "record": 768442,
+      "event": 4624,
+      "source": "Microsoft-Windows-Security-Auditing",
+      "time_utc": null,
+      "local_time_unverified": "2020-09-21 00:14:53",
+      "collector_utc": "2020-09-21T04:14:55.108000Z",
+      "details": {
+        "logon_type": "3",
+        "user": "pgustavo",
+        "source_ip": "172.18.39.5"
+      }
+    },
+    {
+      "record": 768447,
+      "event": 4624,
+      "source": "Microsoft-Windows-Security-Auditing",
+      "time_utc": null,
+      "local_time_unverified": "2020-09-21 00:14:53",
+      "collector_utc": "2020-09-21T04:14:55.113000Z",
+      "details": {
+        "logon_type": "3",
+        "user": "pgustavo",
+        "source_ip": "172.18.39.5"
+      }
+    },
+    {
+      "record": 768450,
+      "event": 4624,
+      "source": "Microsoft-Windows-Security-Auditing",
+      "time_utc": null,
+      "local_time_unverified": "2020-09-21 00:14:53",
+      "collector_utc": "2020-09-21T04:14:55.116000Z",
+      "details": {
+        "logon_type": "3",
+        "user": "pgustavo",
+        "source_ip": "172.18.39.5"
+      }
+    },
+    {
+      "record": 768453,
+      "event": 4624,
+      "source": "Microsoft-Windows-Security-Auditing",
+      "time_utc": null,
+      "local_time_unverified": "2020-09-21 00:14:53",
+      "collector_utc": "2020-09-21T04:14:55.119000Z",
+      "details": {
+        "logon_type": "3",
+        "user": "pgustavo",
+        "source_ip": "172.18.39.5"
+      }
+    },
+    {
+      "record": 768458,
+      "event": 4688,
+      "source": "Microsoft-Windows-Security-Auditing",
+      "time_utc": null,
+      "local_time_unverified": "2020-09-21 00:14:53",
+      "collector_utc": "2020-09-21T04:14:55.123000Z",
+      "details": {
+        "process": "wmiprvse.exe",
+        "image": "C:\\Windows\\System32\\wbem\\WmiPrvSE.exe",
+        "pid": 2740,
+        "parent_pid": 960,
+        "guid": null,
+        "parent_guid": null,
+        "command_line_present": true,
+        "encoded_argument": false
+      }
+    },
+    {
+      "record": 768477,
+      "event": 4688,
+      "source": "Microsoft-Windows-Security-Auditing",
+      "time_utc": null,
+      "local_time_unverified": "2020-09-21 00:14:53",
+      "collector_utc": "2020-09-21T04:14:55.136000Z",
+      "details": {
+        "process": "powershell.exe",
+        "image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "pid": 9804,
+        "parent_pid": 2740,
+        "guid": null,
+        "parent_guid": null,
+        "command_line_present": true,
+        "encoded_argument": true
+      }
+    },
+    {
+      "record": 768478,
+      "event": 4688,
+      "source": "Microsoft-Windows-Security-Auditing",
+      "time_utc": null,
+      "local_time_unverified": "2020-09-21 00:14:53",
+      "collector_utc": "2020-09-21T04:14:55.136000Z",
+      "details": {
+        "process": "conhost.exe",
+        "image": "C:\\Windows\\System32\\conhost.exe",
+        "pid": 8204,
+        "parent_pid": 9804,
+        "guid": null,
+        "parent_guid": null,
+        "command_line_present": true,
+        "encoded_argument": false
+      }
+    },
+    {
+      "record": 8669,
+      "event": 4104,
+      "source": "Microsoft-Windows-PowerShell",
+      "time_utc": null,
+      "local_time_unverified": "2020-09-21 00:14:55",
+      "collector_utc": "2020-09-21T04:14:56.312000Z",
+      "details": {
+        "script_block_present": true
+      }
+    },
+    {
+      "record": 3215794,
+      "event": 1,
+      "source": "Microsoft-Windows-Sysmon",
+      "time_utc": "2020-09-21T04:15:12.964000Z",
+      "local_time_unverified": null,
+      "collector_utc": null,
+      "details": {
+        "process": "whoami.exe",
+        "image": "C:\\Windows\\System32\\whoami.exe",
+        "pid": null,
+        "parent_pid": 9804,
+        "guid": "{d273d0f0-28d0-5f68-b108-000000000800}",
+        "parent_guid": "{d273d0f0-28bd-5f68-af08-000000000800}",
+        "command_line_present": true,
+        "encoded_argument": false
+      }
+    },
+    {
+      "record": 768702,
+      "event": 4688,
+      "source": "Microsoft-Windows-Security-Auditing",
+      "time_utc": null,
+      "local_time_unverified": "2020-09-21 00:15:12",
+      "collector_utc": "2020-09-21T04:15:14.712000Z",
+      "details": {
+        "process": "whoami.exe",
+        "image": "C:\\Windows\\System32\\whoami.exe",
+        "pid": 2044,
+        "parent_pid": 9804,
+        "guid": null,
+        "parent_guid": null,
+        "command_line_present": true,
+        "encoded_argument": false
+      }
+    }
+  ],
+  "event_counts": {
+    "1": 4,
+    "4624": 4,
+    "4688": 4,
+    "4104": 1,
+    "6005": 0,
+    "6006": 0,
+    "1074": 0
+  },
+  "caveat": "A filtered export cannot establish whether absent events were ever generated."
+}

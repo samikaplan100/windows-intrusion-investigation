@@ -33,11 +33,12 @@ Requires **Python 3** and the pinned dependency.
 
 ```bash
 python -m pip install -r requirements.txt
+python download_dataset.py
 python -m unittest -v test_analyze.py
 python analyze.py samples/mordor_empire_wmi.zip --host WORKSTATION6 --output findings.md --json findings.json
 ```
 
-The analyzer can also parse original Windows `.evtx` input files through `python-evtx`, but this example intentionally uses the **original OTRF ZIP export**.
+The analyzer can also parse original Windows `.evtx` input files through `python-evtx`, but this example uses the **original OTRF ZIP export fetched from the pinned upstream commit and verified by SHA-256**. The large lab dataset is downloaded when needed rather than duplicated in this repository.
 
 **Expected result:** 19 passing tests and generated findings grouped into four confidence categories:
 
@@ -57,9 +58,10 @@ The tool is a focused investigation aid, **not** a general-purpose intrusion det
 | [`findings.md`](findings.md) / [`findings.json`](findings.json) | Reproducible machine-generated results |
 | [`investigation.md`](investigation.md) | Detailed narrative and UTC timeline |
 | [`dataset_provenance.md`](dataset_provenance.md) | Original URL, pinned commit, SHA-256, event counts, caveats |
-| [`samples/`](samples/) | Original upstream ZIP and scenario metadata |
+| [`samples/`](samples/) | Scenario metadata; run `python download_dataset.py` to fetch the pinned upstream ZIP |
 | [`docs/evidence_timeline.png`](docs/evidence_timeline.png) | Visual reconstruction, illustrative not live SOC footage |
 | [`test_output.txt`](test_output.txt) | Captured test run |
+| [`download_dataset.py`](download_dataset.py) | Fetches pinned public OTRF ZIP and verifies its SHA-256; no user data |
 | [`archive/initial-eight-event-case/wmi_target.evtx`](archive/initial-eight-event-case/wmi_target.evtx) | Separate 8-event EVTX fixture, included solely to regression-test the native EVTX parser; **not** part of the OTRF investigation |
 
 ## Source integrity and attribution
@@ -69,7 +71,7 @@ The tool is a focused investigation aid, **not** a general-purpose intrusion det
 - ZIP SHA-256: `96f1dbd9c5b077c8951b6e1f43b7fe01a2620c649889262481f15139a1746d88`
 - Uncompressed source JSON SHA-256: `b796a97fac2b94e03cce777b88960d227c1ae5e4ce4824f2f1540b28ff3479f3`
 
-The bundled upstream dataset is licensed under **MIT**, with its original copyright and licence notice preserved in [`third_party/OTRF_LICENSE.txt`](third_party/OTRF_LICENSE.txt). The original analysis code has no separate reuse licence declared in this release.
+The upstream dataset is licensed under **MIT**, with its original copyright and licence notice preserved in [`third_party/OTRF_LICENSE.txt`](third_party/OTRF_LICENSE.txt). The original analysis code has no separate reuse licence declared in this release.
 
 ## How this was built
 
